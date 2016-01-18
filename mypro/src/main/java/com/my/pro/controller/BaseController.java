@@ -10,7 +10,7 @@ public class BaseController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String toHomePage(Model model) {
-		model.addAttribute("msg", "THIS IS SAMPLE");
+		model.addAttribute("msg", "THIS IS HOME");
 		return "home";
 	}
 

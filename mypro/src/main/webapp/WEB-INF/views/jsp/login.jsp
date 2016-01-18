@@ -7,10 +7,10 @@
 </head>
 <body>
 	<h4>MY PRO SAMPLE</h4>
+	<h3>Login Page</h3>
 	says:
 	<span class="blue">${msg}</span>
-	<c:url var="login" value="/login"></c:url>
-	<a href="${login}">LOGIN VIEW</a>
-
+	<c:url var="home" value="/"></c:url>
+	<a href="${home}">HOME VIEW</a>
 </body>
 </html>
