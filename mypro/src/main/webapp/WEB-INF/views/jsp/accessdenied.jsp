@@ -7,11 +7,8 @@
 </head>
 <body>
 	<h4>MY PRO SAMPLE</h4>
-	says:
-	<span class="blue">${msg}</span>
-	<c:url var="login" value="/login"></c:url>
-
-	<a href="${login}">LOGIN VIEW</a>
+	<h3>OOPs ! It seems like you do not have access to the following
+		page...</h3>
 
 </body>
 </html>

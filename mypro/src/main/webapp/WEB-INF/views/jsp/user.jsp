@@ -7,11 +7,13 @@
 </head>
 <body>
 	<h4>MY PRO SAMPLE</h4>
+	<h3>USER Page</h3>
 	says:
 	<span class="blue">${msg}</span>
-	<c:url var="login" value="/login"></c:url>
-
-	<a href="${login}">LOGIN VIEW</a>
-
+	<c:url var="logout" value="/logout"></c:url>
+	<a href="${logout}">LOG OUT</a>
+	<h1>${user}</h1>
+	<c:url value="/user/create" var="createUserURL" />
+	<a href="${createUserURL}">Create new USER</a>
 </body>
 </html>
