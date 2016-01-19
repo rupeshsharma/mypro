@@ -17,14 +17,16 @@
 
 	<div class="form-container">
 
-		<h1>New User Registration Form</h1>
+		<h1 align="center" style="color: white;">New User Registration
+			Form</h1>
 		<c:url value="/user/create" var="createUserURL" />
 		<form:form method="POST" modelAttribute="user" class="form-horizontal"
 			action="${createUserURL}">
 
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="ssoId">Username</label>
+					<label class="col-md-3 control-lable" for="ssoId"
+						style="color: white;">Username</label>
 					<div class="col-md-7">
 						<form:input type="text" path="username" id="ssoId"
 							class="form-control input-sm" />
@@ -37,7 +39,8 @@
 
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="password">Password</label>
+					<label class="col-md-3 control-lable" for="password"
+						style="color: white;">Password</label>
 					<div class="col-md-7">
 						<form:input type="password" path="password" id="password"
 							class="form-control input-sm" />
@@ -50,7 +53,8 @@
 
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="email">Email</label>
+					<label class="col-md-3 control-lable" for="email"
+						style="color: white;">Email</label>
 					<div class="col-md-7">
 						<form:input type="text" path="email" id="email"
 							class="form-control input-sm" />
