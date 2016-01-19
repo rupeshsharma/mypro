@@ -8,4 +8,6 @@ public interface UserService {
 
 	void create(User user);
 
+	User getCurrentLoggedInUser();
+
 }

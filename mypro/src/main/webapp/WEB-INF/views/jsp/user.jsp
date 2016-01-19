@@ -12,7 +12,8 @@
 	<span class="blue">${msg}</span>
 	<c:url var="logout" value="/logout"></c:url>
 	<a href="${logout}">LOG OUT</a>
-	<h1>${user}</h1>
+	<h1>Username :${user.username}</h1>
+	<h1>Email :${user.email}</h1>
 	<c:url value="/user/create" var="createUserURL" />
 	<a href="${createUserURL}">Create new USER</a>
 </body>

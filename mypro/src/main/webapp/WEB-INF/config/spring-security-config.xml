@@ -8,8 +8,8 @@
 	<!-- enable use-expressions -->
 	<http auto-config="true">
 		<intercept-url pattern="/" access="permitAll" />
-		<intercept-url pattern="/user/**"
-			access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+		<!-- <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" 
+			/> -->
 		<form-login login-page="/login" username-parameter="username"
 			password-parameter="password" authentication-success-handler-ref="customSuccessHandler"
 			authentication-failure-url="/login?error=true" />

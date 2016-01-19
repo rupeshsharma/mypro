@@ -1,7 +1,10 @@
 package com.my.pro.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -15,9 +18,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Table(name = "USER")
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
 
 	/**
 	 * Serial version UID
@@ -29,21 +36,62 @@ public class User implements Serializable {
 	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "username")
+	@Column(name = "USERNAME")
 	private String username;
 
-	@Column(name = "password")
+	@Column(name = "PASSWORD")
 	private String password;
 
-	@Column(name = "enabled", insertable = true, updatable = true, columnDefinition = "CHAR(1) DEFAULT 'y'")
-	private char enabled;
+	@Column(name = "ENABLED")
+	private boolean enabled;
 
-	@Column(name = "email")
+	@Column(name = "ACCOUN_NON_EXPIRED")
+	private boolean accountNonExpired;
+
+	@Column(name = "ACCOUN_NON_LOCKED")
+	private boolean accountNonLocked;
+
+	@Column(name = "CREDENTIALS_NON_EXPIRED")
+	private boolean credentialsNonExpired;
+
+	@Column(name = "EMAIL")
 	private String email;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "USER_ROLE_MAPPING", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
 	private Set<Role> roles = new HashSet<Role>();
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public boolean isAccountNonExpired() {
+		return accountNonExpired;
+	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+
+	public boolean isCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
 
 	public Long getId() {
 		return id;
@@ -85,12 +133,12 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public char getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(char enabled) {
-		this.enabled = enabled;
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		for (Role role : this.getRoles()) {
+			authorities.add(new SimpleGrantedAuthority(role.getName()));
+		}
+		return authorities;
 	}
 
 }
